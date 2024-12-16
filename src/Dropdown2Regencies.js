@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Select, Spin } from "antd";
 import { useLocationContext } from "./context/LocationContext";
+import { config } from "./constants";
 
 const { Option } = Select;
 
@@ -20,7 +21,7 @@ const DropdownRegencies = () => {
       try {
         setLoading(true); // Mulai loading
         const response = await fetch(
-          `https://sc-copy-api-wilayah-indonesia-master-yhe2.vercel.app/api/regencies/${idProvince}.json`
+          `${config.apiAddress}/regencies/${idProvince}.json`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch regencies");
@@ -37,7 +38,7 @@ const DropdownRegencies = () => {
     };
 
     fetchRegencies();
-    
+
     setRegencies([]);
     setSelectedRegency("");
     setIdRegency("");

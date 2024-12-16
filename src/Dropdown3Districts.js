@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Select, Spin } from "antd";
 import { useLocationContext } from "./context/LocationContext";
+import { config } from "./constants";
 
 const { Option } = Select;
 
@@ -19,7 +20,7 @@ const Dropdown3Districts = () => {
       try {
         setLoading(true); // Mulai loading
         const response = await fetch(
-          `https://sc-copy-api-wilayah-indonesia-master-yhe2.vercel.app/api/districts/${idRegency}.json`
+          `${config.apiAddress}/districts/${idRegency}.json`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch districts");
